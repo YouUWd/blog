@@ -119,7 +119,7 @@ public class Test {
 		URLClassLoader v1 = new URLClassLoader(new URL[]{new URL(v1dir)});
 		URLClassLoader v2 = new URLClassLoader(new URL[]{new URL(v2dir)});
 		
-  Class<?> depv1Class = v1.loadClass("Dep");
+    Class<?> depv1Class = v1.loadClass("Dep");
 		Object depv1 = depv1Class.getConstructor().newInstance();
 		depv1Class.getMethod("print").invoke(depv1);
 
