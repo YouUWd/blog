@@ -1,7 +1,7 @@
 ---
 title: 通用开发环境搭建
 date: 2021-08-12 15:32:34
-tags: [java maven docker mysql]
+tags: [java maven docker mysql gitlab github]
 ---
 
 > 以下文件安装默认目录为~/dev  
@@ -51,5 +51,48 @@ PATH=$PATH:~/dev/mysql-8.0.26-macos11-arm64/bin
 
 
 
+## Github  GitLab SSH keys 配置
 
+> ed25519加密解密很快,生成时间短而且安全性更高,rsa则加密解密稍慢,生成时间长,安全性没有ed25519高,只是rsa基本都是默认,所以用的人更多,但是建议转换为ed25519,网站软件现在基本都支持了.
+
+### Github (ed25519)
+
+```shell
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+### GitLab (rsa)
+
+```shell
+ssh-keygen -t rsa -C "your_email@example.com"
+```
+
+### 配置ssh config
+
+```shell
+#将上面生成的id_rsa 及 id_rsa.pub 分别移动到github和gitlab目录
+# cat ~/.ssh/config
+# gitlab
+Host gitlab.*.com
+    HostName gitlab.company.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/gitlab/id_rsa
+
+#github
+Host github.com
+    HostName github.com
+    AddKeysToAgent yes
+    UseKeychain yes
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/github/id_ed25519
+```
+
+
+
+### 验证SSH是否配置成功
+
+```shell
+ssh -vT git@github.com
+ssh -vT git@gitlab.company.com
+```
 

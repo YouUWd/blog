@@ -10,7 +10,12 @@ categories: Mybatis
 
 > 主要位于org.apache.ibatis.binding包里面
 
-![binding](https://youuwd.github.io/images/Package-binding.png)
+```
+MapperRegistry  负责注册获取Mapper
+MapperProxy  Mapper接口的代理
+```
+
+![binding](/images/image-20210816113311699.png)
 
 
 
@@ -26,9 +31,8 @@ categories: Mybatis
 >           ---> Proxy.newProxyInstance
 > ```
 >
+
 > command 来自 mapper的注解或者xml配置
->
-> 
 
 ```java
 // org.apache.ibatis.binding.MapperMethod#execute

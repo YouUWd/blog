@@ -30,6 +30,8 @@ docker run --name mysql-3306 -v /tmp/mysql:/var/lib/mysql -p 33060:3306 -e MYSQL
 # 常用
 docker run --name mysql-3306 -v /tmp/mysql:/var/lib/mysql -p 33060:3306 -e MYSQL_ROOT_PASSWORD=pass -d mysql --default-authentication-plugin=mysql_native_password
 
+CREATE USER 'root'@'%' IDENTIFIED BY 'pass';
+GRANT ALL ON *.* TO 'root'@'%';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'pass';
 ```
 

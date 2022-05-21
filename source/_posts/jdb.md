@@ -51,5 +51,5 @@ java -Xdebug -Xrunjdwp:transport=dt_socket,address=8888,server=y,suspend=y Hello
 
 ## IDEA Remote Debug
 
-![](https://youuwd.github.io/images/rd.png)
+![image-20210816195342742](/images/image-20210816195342742.png)
 
